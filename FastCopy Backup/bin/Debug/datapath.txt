@@ -1,7 +1,33 @@
 #Option指定
-/force_close /skip_empty_dir /filelog /error_stop=FALSE /logdir=D:\temp\Fastcopy
+/force_close /skip_empty_dir /filelog /error_stop=FALSE /logdir=F:\
 #
 #コピー元・コピー先のフォルダの指定
 #Title,コピー元フォルダ,コピー先フォルダ
-test1,D:\temp\Walrus,D:\temp\Fastcopy
-test2,D:\temp\douki4syncdir_1.2,D:\temp\Fastcopy
+#MyDoc,D:\MyDocuments,F:\Enterprise\MyDocuments
+#Document & Settings,C:\Documents and Settings,F:\Enterprise\Documents and setting
+#C#,D:\C Sharp,F:\Enterprise\C Sharp
+#D2 CAD,D:\D2CAD,F:\Enterprise\D2CAD
+#DVD,D:\DVD_VIDEO,F:\Enterprise\DVD_VIDEO
+#秀丸 macro,D:\Hidemac,F:\Enterprise\Hidemac
+#Home Page,D:\Homepage,F:\Enterprise\Homepage
+#Icons,D:\Desktop Icon,F:\Enterprise\Desktop Icon
+#Html files,D:\Html Files,F:\Enterprise\Html Files
+#CD Jacket,D:\Jacket,F:\Enterprise\Jacket
+#GTD,D:\howm,F:\Enterprise\howm
+#Mail data,D:\Mail,F:\Enterprise\Mail
+#Mail temp,D:\MailTemp,F:\Enterprise\MailTemp
+#Music,D:\Music,F:\Enterprise\Music
+#会社,D:\Panasonic,F:\Enterprise\Panasonic
+#PDA,D:\PDA,F:\Enterprise\PDA
+#Perl,D:\Perl,F:\Enterprise\Perl
+#Program Files,C:\Program Files,F:\Enterprise\Program Files
+#tex source,C:\tex,F:\Enterprise\ptex
+#serial,D:\Serial,F:\Enterprise\Serial
+#soft,D:\Soft,F:\Enterprise\Soft
+temp,D:\temp,F:\Enterprise\temp
+#TeX file,D:\TeX,F:\Enterprise\TeX
+#xfy Blog Editor,C:\Documents and Settings\yuichi\Application Data\JustSystems\xfy Blog Editor,F:\Enterprise\xfy BlogEditor
+#Ruby,C:\Ruby19,F:\Enterprise\Ruby
+#HouseholdAccounts,D:\HouseholdAccounts,F:\Enterprise\HouseholdAccounts
+#結婚式DVD,D:\結婚式DVD,F:\Enterprise\結婚式DVD
+#Windows,C:\WINDOWS,F:\Enterprise\Windows

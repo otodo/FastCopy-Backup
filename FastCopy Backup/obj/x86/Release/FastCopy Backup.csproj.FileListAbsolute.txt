@@ -1,0 +1,5 @@
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\bin\Release\FastCopy Backup.exe
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\bin\Release\FastCopy Backup.pdb
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\obj\x86\Release\ResolveAssemblyReference.cache
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\obj\x86\Release\FastCopy Backup.exe
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\obj\x86\Release\FastCopy Backup.pdb
