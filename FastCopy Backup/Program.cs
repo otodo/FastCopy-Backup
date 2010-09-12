@@ -11,22 +11,9 @@ namespace FastCopy_Backup
     {
         static void Main(string[] args)
         {
-            //string fcpath = "\"C:\\Program Files\\FastCopy\\FastCopy.exe\"";
-            //string fcop = "/force_close";
-            //string sourcedir = "\"D:\\temp\"";
-            //string copydir = "\"D:\\temp\\FastCopy\"";
-            //Process psinfo = new Process();
-            //string go_fastcopy = fcpath + " " + fcop + " " + sourcedir + " /to=" + copydir;
-            //Console.WriteLine(go_fastcopy);
-            //psinfo.StartInfo.FileName = go_fastcopy;
-            //psinfo.FileName = fcpath + " " + fcop + " " + sourcedir + " /to=" + copydir; // 実行するファイル
-            //psinfo.StartInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
-            //psinfo.StartInfo.UseShellExecute = false; // シェル機能を使用しない
-            //psinfo.Start();
-            //psinfo.WaitForExit();
             Fastcopy coping = new Fastcopy();
             coping.datapath();
-            coping.StartCopy("/force_close");
+            coping.StartCopy();
             Console.WriteLine("終了");
             Console.Read();
         }
@@ -35,7 +22,8 @@ namespace FastCopy_Backup
     class Fastcopy
     {
         private string fcpath;
-        private string infopath;
+        private string infopath = " ";
+        private string op = " ";
         public struct pathinfo
         {
             public string title;
@@ -64,8 +52,12 @@ namespace FastCopy_Backup
             infopath = inputDatapath;
         }
 
-        public void StartCopy(string op)
+        public void StartCopy()
         {
+            if (infopath == " ") // StartCopyの前にdatapathが設定されていない場合
+            {
+                datapath();
+            }
             if ((chkpathinfo()) == 0)//設定パス情報が正しい場合
             {
                 getpathinfo();
@@ -87,7 +79,10 @@ namespace FastCopy_Backup
                     _process.WaitForExit();
 
                 }
-                
+                //if (op.CompareTo("/filelog") == 0)
+                //{
+                //    getlogfile();
+                //}
 
             }
             else
@@ -116,9 +111,11 @@ namespace FastCopy_Backup
             string line;
             while ((line = reader.ReadLine()) != null)
             {
-                if (!line.StartsWith("#"))
+                //コピー元・コピー先ディレクトリパスの読み込み
+                if (!((line.StartsWith("#")) || (line.StartsWith("/"))))
                 {
                     line = line.Replace("\r", "").Replace("\n", ""); //改行削除
+                    line = line.Replace("\\", "\\\\"); //\記号を2重
                     string[] eachcol = line.Split(',');
                     if (i != 1)
                     {
@@ -128,6 +125,11 @@ namespace FastCopy_Backup
                     pathlist[i - 1].inputfile = "\"" + eachcol[1] + "\"";
                     pathlist[i - 1].outputfile = "\"" + eachcol[2] + "\"";
                     i++;
+                }
+                else if (line.StartsWith("/")) //オプション指定
+                {
+                    line = line.Replace("\r", "").Replace("\n", ""); //改行削除
+                    op = "\"" + line + "\"";
                 }
             }
             reader.Close();

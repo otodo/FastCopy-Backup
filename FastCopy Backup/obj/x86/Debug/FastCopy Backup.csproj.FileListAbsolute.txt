@@ -8,3 +8,8 @@ d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\obj\x8
 d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\obj\x86\Debug\ResolveAssemblyReference.cache
 d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\bin\Debug\FastCopy Backup.exe
 d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\bin\Debug\FastCopy Backup.pdb
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\obj\x86\Debug\FastCopy Backup.exe
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\obj\x86\Debug\FastCopy Backup.pdb
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\bin\Debug\FastCopy Backup.exe
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\bin\Debug\FastCopy Backup.pdb
+D:\C Sharp\Git\FastCopy-Backup\FastCopy Backup\obj\x86\Debug\ResolveAssemblyReference.cache
