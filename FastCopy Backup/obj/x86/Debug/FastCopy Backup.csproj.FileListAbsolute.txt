@@ -1,0 +1,10 @@
+C:\Documents and Settings\yuichi\Local Settings\Application Data\Temporary Projects\FastCopy Backup\bin\Debug\FastCopy Backup.exe
+C:\Documents and Settings\yuichi\Local Settings\Application Data\Temporary Projects\FastCopy Backup\bin\Debug\FastCopy Backup.pdb
+C:\Documents and Settings\yuichi\Local Settings\Application Data\Temporary Projects\FastCopy Backup\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\yuichi\Local Settings\Application Data\Temporary Projects\FastCopy Backup\obj\x86\Debug\FastCopy Backup.exe
+C:\Documents and Settings\yuichi\Local Settings\Application Data\Temporary Projects\FastCopy Backup\obj\x86\Debug\FastCopy Backup.pdb
+d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\obj\x86\Debug\FastCopy Backup.exe
+d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\obj\x86\Debug\FastCopy Backup.pdb
+d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\obj\x86\Debug\ResolveAssemblyReference.cache
+d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\bin\Debug\FastCopy Backup.exe
+d:\mydocuments\visual studio 2010\Projects\FastCopyBackup\FastCopy Backup\bin\Debug\FastCopy Backup.pdb
