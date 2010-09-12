@@ -1,0 +1,7 @@
+#Option指定
+/force_close /skip_empty_dir /filelog /error_stop=FALSE /logdir=D:\temp\Fastcopy
+#
+#コピー元・コピー先のフォルダの指定
+#Title,コピー元フォルダ,コピー先フォルダ
+test1,D:\temp\Walrus,D:\temp\Fastcopy
+test2,D:\temp\douki4syncdir_1.2,D:\temp\Fastcopy

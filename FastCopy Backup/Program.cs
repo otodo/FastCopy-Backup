@@ -24,6 +24,8 @@ namespace FastCopy_Backup
         private string fcpath;
         private string infopath = " ";
         private string op = " ";
+        private string logfilename = "";
+        private string savelog = " ";
         public struct pathinfo
         {
             public string title;
@@ -35,7 +37,7 @@ namespace FastCopy_Backup
 
         public Fastcopy()
         {
-            fcpath = "\"C:\\Program Files\\FastCopy\\FastCopy.exe\"";
+            fcpath = "C:\\Program Files\\FastCopy\\FastCopy.exe";
         }
         public Fastcopy(string inputPath)
         {
@@ -69,20 +71,23 @@ namespace FastCopy_Backup
                 {
                     string go_fastcopy;
                     //go_fastcopy = "\"C:\\Program Files\\FastCopy\\FastCopy.exe\"" + " /force_close" + " \"D:\\temp\"" + " /to=\"D:\\temp\\FastCopy\"";
-                    go_fastcopy = fcpath + " " + op + " " + eachpath.inputfile + " /to=" + eachpath.outputfile;
+                    go_fastcopy = "\"" + fcpath +"\"" + " " + op + " " + eachpath.inputfile + " /to=" + eachpath.outputfile;
                     Process _process = new Process();
                     _process.StartInfo.FileName = go_fastcopy;
                     _process.StartInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
                     _process.StartInfo.UseShellExecute = false; // シェル機能を使用しない
                     _process.Start();
+                    Console.WriteLine(go_fastcopy);
                     Console.WriteLine(eachpath.title + ": " + eachpath.inputfile + " → " + eachpath.outputfile + " へコピー中");
                     _process.WaitForExit();
 
                 }
-                //if (op.CompareTo("/filelog") == 0)
-                //{
-                //    getlogfile();
-                //}
+                if (!(savelog == " "))
+                {
+
+                    string oldlogpath = fcpath.Replace("FastCopy.exe", "") + "Log\\" + logfilename;
+                    System.IO.File.Copy(oldlogpath, savelog);
+                }
 
             }
             else
@@ -109,13 +114,14 @@ namespace FastCopy_Backup
         {
             System.IO.StreamReader reader = new System.IO.StreamReader(infopath);
             string line;
+            string filelog = "";
             while ((line = reader.ReadLine()) != null)
             {
                 //コピー元・コピー先ディレクトリパスの読み込み
                 if (!((line.StartsWith("#")) || (line.StartsWith("/"))))
                 {
                     line = line.Replace("\r", "").Replace("\n", ""); //改行削除
-                    line = line.Replace("\\", "\\\\"); //\記号を2重
+                    //line = line.Replace("\\", "\\\\"); //\記号を2重 → 不要
                     string[] eachcol = line.Split(',');
                     if (i != 1)
                     {
@@ -129,7 +135,33 @@ namespace FastCopy_Backup
                 else if (line.StartsWith("/")) //オプション指定
                 {
                     line = line.Replace("\r", "").Replace("\n", ""); //改行削除
-                    op = "\"" + line + "\"";
+                    string[] eachop = line.Split(' ');
+                    foreach (string ops in eachop)
+                    {
+                        if (ops.IndexOf("/filelog") >= 0)
+                        {
+                            DateTime dt = DateTime.Now;
+                            logfilename =  dt.ToString("yyMMddHHmm") + ".log";
+                            string logfullpath = "/filelog=\"" + logfilename + "\"";
+                            filelog = ops.Replace("/filelog", logfullpath);
+
+                        }
+                        else if (ops.IndexOf("/logdir") >= 0) //ログ保存先ディレクトリが指定されている場合
+                        {
+                            savelog = ops.Replace("/logdir=", "");
+                            savelog = savelog + "\\" + logfilename;
+                        }
+
+                        if ((ops.IndexOf("/logdir") < 0) || (!ops.StartsWith("/filelog")))
+                        {
+                            op = op + " " + ops;
+                        }
+                        
+                    }
+                    if (!(filelog == ""))
+                    {
+                        op = op + " " + filelog;
+                    }
                 }
             }
             reader.Close();

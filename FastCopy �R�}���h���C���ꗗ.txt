@@ -1,0 +1,88 @@
+基本的な書式は、以下の通りです。
+
+　fastcopy.exe [/オプション類] file1 file2 ... [/to=dest_dir]
+　（なお、GUI モードと違い、区切り文字は空白文字になります。従い、空白文字を含むパス名は、"" で括って指定してください。）
+
+指定可能なオプションは、以下の通りです。 （なお、'=' の前後には空白を入れないで下さい） 
+
+/cmd=(noexist_only|diff|update|sync|force_copy|move|delete) ... 動作モード指定。
+　（cmd 指定省略時は diff モード。delete 指定時は、/to=dest_dir は使いません） 
+cmdline GUIでの表記 
+noexist_only 差分（上書きなし） 
+diff 差分（サイズ・日付） 
+update 差分（最新日付） 
+force_copy コピー（全上書き） 
+sync 同期（サイズ・日付） 
+move 移動（全上書き） 
+delete 全削除 
+
+/auto_close ... コピー終了後、自動的に終了します 
+
+/force_close ... コピー終了後、エラーが発生していた場合も、強制的に終了します 
+
+/open_window ... タスクトレイに格納しません（直ちに実行開始しない場合は指定不要） 
+
+/estimate ... コピー完了時間予測を行います 
+
+/no_exec ... パラメータをメインウィンドウにセットしますが、実行はしません 
+
+/no_confirm_del ... /delete 時に、動作開始の問い合わせをしません 
+
+/no_confirm_stop ... 継続不能エラー発生時にも、エラーを出しません 
+
+/error_stop ... エラー発生時にダイアログを出し、続行するかを問い合わせます（/error_stop=FALSE で抑止） 
+
+/bufsize=N(MB) ... バッファサイズを MB 単位で指定します 
+
+/log ... ログファイル(fastcopy.log) にログを出力します（/log=FALSE で抑止） 
+
+/logfile=ログファイル名 ... ログファイル名を指定します 
+
+/filelog ... 詳細ファイルログを記録します。FastCopy/Log フォルダ配下に、日付.log という形式で保存されます。ベリファイ時はハッシュ値（通常 MD5、設定によって SHA1）も記録されます。（/filelog=filename で指定ファイルに保存可能。ただし、同じファイルを指定して、同時に複数の FastCopy を実行した場合、ログ出力が交互に混じる可能性があります） 
+
+/utf8 ... UTF-8でログを記録します 
+
+/skip_empty_dir ... フィルタ指定時、空ディレクトリをコピーしません（/skip_empty_dir=FALSE で抑止） 
+
+/job=ジョブ名 ... 事前に登録してあるジョブを指定します 
+
+/force_start ... 他の FastCopy がコピー実行中の場合も直ちに実行します（/force_start=FALSE で抑止） 
+
+/disk_mode=(auto|same|diff) ... 自動/同一/別HDDモードを指定します。（デフォルト: auto） 
+
+/speed=(full|autoslow|9-1(90%-10%)|suspend) ... 速度コントロールを行います。 
+
+/srcfile="files.txt" ... Source内容をファイルで指定します。１行に１ファイルを記述します。（なお、大量のファイルを指定すると、Sourceコンボボックスの表示/再描画に非常に時間が掛かります） 
+
+/srcfile_w="files.txt" ... /srcfile= と同様ですが、UNICODE で記述します。 
+
+/include="..." ... Include フィルタを指定します（詳細） 
+
+/exclude="..." ... Exclude フィルタを指定します（詳細） 
+
+/from_date="..." ... 更新日付フィルタ（最古）を指定します（詳細） 
+
+/to_date="..." ... 更新日付フィルタ（最新）を指定します（詳細） 
+
+/min_size="..." ... サイズフィルタ（最小）を指定します（詳細） 
+
+/max_size="..." ... サイズフィルタ（最大）を指定します（詳細） 
+
+/wipe_del ... 削除モード時に、ファイルを削除する前に上書き＆リネームして、復元を無効にします（/wipe_del=FALSE で抑止） 
+
+/acl ... アクセスコントロールリスト(ACL)をコピーします（NTFSのみ有効）（/acl=FALSE で抑止） 
+
+/stream ... 副次ストリームをコピーします（NTFSのみ有効）（/stream=FALSE で抑止） 
+
+/reparse ... ジャンクション・マウントポイント・シンボリックリンクを（配下ではなく）それ自体をコピーします（/reparse=FALSE で配下をコピー）（詳細） 
+
+/verify ... MD5(or SHA-1) による書き込みデータのベリファイを行います（/verify=FALSE で抑止） 
+
+/linkdest ... ハードリンクを可能な限り再現します。詳細は こちらを参照 ください。 
+
+/recreate ... ファイル更新の挙動を、既存ファイルの上書きから、既存ファイル削除＆再生成に変更します。（/linkdest 指定時には、/recreate指定の有無に関わらず、この動作を行います）常時、この動作を有効にしたい場合、fastcopy.ini [main] recreate=1 にします。 
+
+/postproc=終了時処理名 ... 事前に登録してある終了時処理名を指定します。（/postproc=FALSE で抑止） 
+
+例） C:\test 配下を D:\Backup Folder に差分コピーする場合
+　fastcopy.exe /cmd=diff C:\test /to="D:\Backup Folder\" 
