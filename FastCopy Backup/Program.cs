@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using StopWatchTest;
 
 namespace FastCopy_Backup
 {
@@ -11,9 +12,15 @@ namespace FastCopy_Backup
     {
         static void Main(string[] args)
         {
+            StopWatch sw = new StopWatch();
             Fastcopy coping = new Fastcopy();
+            sw.Start();
+
             coping.datapath();
             coping.StartCopy();
+            
+            sw.Stop();
+            Console.WriteLine("\n処理時間: " + sw);
             Console.WriteLine("終了");
             Console.Read();
         }
@@ -77,7 +84,7 @@ namespace FastCopy_Backup
                     _process.StartInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
                     _process.StartInfo.UseShellExecute = false; // シェル機能を使用しない
                     _process.Start();
-                    Console.WriteLine(go_fastcopy);
+                    //Console.WriteLine(go_fastcopy);
                     Console.WriteLine(eachpath.title + ": " + eachpath.inputfile + " → " + eachpath.outputfile + " へコピー中");
                     _process.WaitForExit();
 
@@ -86,7 +93,7 @@ namespace FastCopy_Backup
                 {
 
                     string oldlogpath = fcpath.Replace("FastCopy.exe", "") + "Log\\" + logfilename;
-                    System.IO.File.Copy(oldlogpath, savelog);
+                    System.IO.File.Copy(oldlogpath, savelog,true);
                 }
 
             }
