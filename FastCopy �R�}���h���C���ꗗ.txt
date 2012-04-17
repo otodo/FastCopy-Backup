@@ -86,3 +86,5 @@ delete 全削除
 
 例） C:\test 配下を D:\Backup Folder に差分コピーする場合
 　fastcopy.exe /cmd=diff C:\test /to="D:\Backup Folder\" 
+
+2012/4/18
